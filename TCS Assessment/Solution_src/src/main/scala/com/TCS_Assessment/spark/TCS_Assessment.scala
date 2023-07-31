@@ -18,8 +18,8 @@ object TCS_Assessment {
   // Use new SparkSession interface in Spark 2.0
   val spark = SparkSession.builder().appName("MatchingEngine").getOrCreate()
 
-  // Read the CSV file into a DataFrame
-  val input_file = "data/fakefriends.csv"
+  // Read the CSV file from Data folder present in Project
+  val input_file = "data/exampleOrders.csv"
   val orders_df = spark.read.option("header", "false").option("inferSchema", "true").csv(input_file)
   val orders_df_renamed = orders_df.withColumnRenamed("_c0", "OrderID")
     .withColumnRenamed("_c1", "UserName")
